@@ -1,6 +1,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+    
   }
   
   textarea {
@@ -31,17 +32,17 @@ body {
   }
   
   .past {
-    background-color: #d3d3d3;
+    background-color: #b6c8cf;
     color: white;
   }
   
   .present {
-    background-color: #ff6961;
+    background-color: #bea0d0;
     color: white;
   }
   
   .future {
-    background-color: #77dd77;
+    background-color: #a2d2bf;
     color: white;
   }
   
@@ -49,7 +50,7 @@ body {
     border-left: 1px solid black;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color: #06aed5;
+    background-color: #6f52e4;
     color: white;
   }
   
