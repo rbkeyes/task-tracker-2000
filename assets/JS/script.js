@@ -70,10 +70,10 @@ for (var i=0; i< schedule.length;i++) {
     var past = (blockID < now);
     if (past) {
         console.log("past");
-        scheduleBlock.removeClass("present").addClass("past");
+        scheduleBlock.removeClass("future").addClass("past");
     } else if (blockID == now) {
         console.log("present");
-        scheduleBlock.removeClass("past").addClass("present");
+        scheduleBlock.removeClass("future").addClass("present");
     } else {
         console.log("future");
         scheduleBlock.removeClass("past").addClass("future");
