@@ -8,7 +8,7 @@ jQuery documentation:
 
 [.siblings()](https://api.jquery.com/siblings/)
 
-[.toggle()](https://api.jquery.com/toggleClass/)
+[.addClass()](https://api.jquery.com/addClass/)
 
 [.attr()](https://api.jquery.com/attr/)
 
