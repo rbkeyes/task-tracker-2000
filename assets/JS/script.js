@@ -4,31 +4,23 @@ $(function () {
 
 function displayPage () {
     setInterval(currentDate, 1000);
-    setInterval(pastPresentFuture, 1000);
+    // setInterval(getNow, 60000)
+    pastPresentFuture();
     displaySavedOnPage();
 }
 
 // display date
 function currentDate () {   
-const date = dayjs().format('MMMM D, YYYY [at] h:mm:ss a');
+const date = dayjs().format('MMMM D, YYYY');
 $("#currentDay").text(date)
 }
-
 
 
 let task = "";
 let hour = "";
 
-// set time to update automatically (set interval)
-const now = dayjs().hour();
-console.log(now);
-if (typeof now === Number);
-console.log("number");
-
 var schedule = $('.time-block');
 console.log(schedule);
-
-
 
 // add event listener to save btn
 $(".saveBtn").click(function () {
@@ -53,10 +45,14 @@ function displaySavedOnPage() {
 
       } 
 
-
 // color code time blocks by past/present/future
 function pastPresentFuture() {
-    // current time
+    // get current time
+    const now = dayjs().hour();
+    console.log(now);
+    if (typeof now === Number);
+    console.log("number");
+// loop through to get each time block + ID
 for (var i=0; i< schedule.length;i++) {
     var scheduleBlock = $(schedule[i]);
         console.log(scheduleBlock);
@@ -66,8 +62,8 @@ for (var i=0; i< schedule.length;i++) {
 
     if (typeof blockID === Number);
         console.log("number");
-
-    var past = (blockID < now);
+// set class for each time block based on current time compared to ID
+var past = (blockID < now);
     if (past) {
         console.log("past");
         scheduleBlock.removeClass("future").addClass("past");
@@ -79,7 +75,7 @@ for (var i=0; i< schedule.length;i++) {
         scheduleBlock.removeClass("past").addClass("future");
     }
 } 
-}
+};
 
 displayPage()
 }
