@@ -9,12 +9,11 @@ $(function () {
     var schedule = $('.time-block');
     var scheduleHour;
     var scheduleItem = $('.description');
-    console.log(scheduleItem);
-   
+
     // get current time
     const now = dayjs().hour();
     console.log(now);
-    // would like to do: 
+    // to do: 
     // set interval to not so it auto-refreshes current time
     // auto-refresh past/present/future when now changes
     // auto-refresh current date when now === 0
@@ -25,8 +24,6 @@ $(function () {
         for (index = 0; index < schedule.length; index++) {
             scheduleHour = $(schedule[index]);
             hourID.push(scheduleHour.attr("id"));
-            localStorage.setItem('hourID', hourID);
-            renderSavedTasks()
             // set class for each time block based on current time compared to ID
             if ((hourID[index] < now)) {
                 console.log("past");
@@ -38,9 +35,11 @@ $(function () {
                 console.log("future");
                 scheduleHour.removeClass("past").addClass("future");
             }
-            console.log(hourID[index]);
+            console.log('hour: ' + hourID[index]);
+            renderSavedTasks()
         }
         console.log(hourID);
+        localStorage.setItem('hourID', hourID);
     };
 
     // display date
@@ -52,9 +51,11 @@ $(function () {
     // get saved tasks
     function getSavedTasks() {
         var savedHour = JSON.parse(localStorage.getItem('hour'));
-        hourArr = savedHour;
         var savedTask = JSON.parse(localStorage.getItem('task'));
-        taskArr = savedTask;
+        if (savedHour && savedTask) {
+            hourArr = savedHour;
+            taskArr = savedTask;
+        }
     };
 
     // render saved tasks
@@ -63,11 +64,13 @@ $(function () {
         if (hourArr !== null && taskArr !== null) {
             for (var h = 0; h < hourArr.length; h++) {
                 if (hourArr[h] == hourID[index]) {
-                    console.log(hourID[index])
-                    console.log(taskArr[h]);
+                    console.log('task: ' + taskArr[h]);
                     scheduleItem[index].textContent = taskArr[h];
                 }
             }
+        } else {
+            scheduleItem[index].textContent = ""
+            return;
         }
     };
 
@@ -92,7 +95,7 @@ $(function () {
         }
     });
 
-
+    
 
     loadPage();
 
