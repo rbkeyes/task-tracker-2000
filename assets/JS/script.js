@@ -1,26 +1,14 @@
-
 // document.ready function to prevent action until DOM is ready
 $(function () {
     console.log('ready to go!')
 
-    function loadPage() {
-        currentDate();
-        getSavedTasks();
-        // renderSavedTasks()
-    }
-    // display date
-    function currentDate() {
-        const date = dayjs().format('MMMM D, YYYY');
-        $("#currentDay").text(date)
-    }
-    currentDate()
-
+    var index = 0;
     var hourArr = [];
     var taskArr = [];
-    var hourID = "";
-
+    var hourID = [];
     var schedule = $('.time-block');
-    var textInput = $('.description');
+    var scheduleHour;
+    var scheduleItem = $('textArea');
 
     // get current time
     const now = dayjs().hour();
@@ -31,6 +19,40 @@ $(function () {
     // auto-refresh past/present/future when now changes
     // auto-refresh current date when now === 0
 
+    function loadPage() {
+        currentDate();
+        // loop through to get each time block, get ID value & push to hourID array
+        for (index = 0; index < schedule.length; index++) {
+            scheduleHour = $(schedule[index]);
+            console.log(scheduleHour);
+            hourID.push(scheduleHour.attr("id"));
+            if (typeof hourID === Number);
+            console.log("number");
+            renderSavedTasks();
+
+            // set class for each time block based on current time compared to ID
+            if ((hourID[index] < now)) {
+                console.log("past");
+                scheduleHour.removeClass("future").addClass("past");
+            } else if (hourID[index] == now) {
+                console.log("present");
+                scheduleHour.removeClass("future").addClass("present");
+            } else {
+                console.log("future");
+                scheduleHour.removeClass("past").addClass("future");
+            }
+
+            console.log(hourID);
+        }
+        console.log()
+    };
+
+    // display date
+    function currentDate() {
+        const date = dayjs().format('MMMM D, YYYY');
+        $("#currentDay").text(date)
+    }
+
     // get saved tasks
     function getSavedTasks() {
         var savedHour = JSON.parse(localStorage.getItem('hour'));
@@ -39,12 +61,21 @@ $(function () {
         var savedTask = JSON.parse(localStorage.getItem('task'));
         taskArr = savedTask;
         console.log(taskArr);
-    }
+    };
 
+    // render saved tasks
     function renderSavedTasks() {
         getSavedTasks();
-        
-    }
+        if (hourArr !== null && taskArr !== null) {
+            console.log(true);
+            console.log(hourArr.length);
+            for (var h = 0; h < hourArr.length; h++) {
+                if (hourArr[h] == hourID[index]) {
+                    console.log(hourArr[h]);
+                }
+            }
+        }
+    };
 
     // add event listener to save btn
     $(".saveBtn").click(function (event) {
@@ -56,7 +87,7 @@ $(function () {
         // empty var hourArr
         hourArr;
         // get value of the element with class of "description" 
-        taskEl = $(this).siblings(".description").val();
+        var taskEl = $(this).siblings(".description").val();
         // push to task array
         taskArr.push(taskEl);
         // empty var taskArr
@@ -68,30 +99,6 @@ $(function () {
         console.log(taskArr);
     });
 
-    // function pastPresentFuture() {
-    // loop through to get each time block + ID
-    for (var i = 0; i < schedule.length; i++) {
-        var scheduleHour = $(schedule[i]);
-        console.log(scheduleHour);
-
-        hourID = scheduleHour.attr("id");
-        console.log(hourID);
-
-        if (typeof hourID === Number);
-        console.log("number");
-
-        // set class for each time block based on current time compared to ID
-        if ((hourID < now)) {
-            console.log("past");
-            scheduleHour.removeClass("future").addClass("past");
-        } else if (hourID == now) {
-            console.log("present");
-            scheduleHour.removeClass("future").addClass("present");
-        } else {
-            console.log("future");
-            scheduleHour.removeClass("past").addClass("future");
-        }
-    }
 
     // retrieve saved tasks from local storage and write to page
     // $("#9 .description").text(localStorage.getItem("9"));
@@ -115,14 +122,14 @@ $(function () {
 
     // console.log(localStorage);
 
-        // for (var i = 9; i <= 17; i++) {
-        //     var savedTask = localStorage.getItem(i);
-        //     if (savedTask !== null) {
-        //         console.log(savedTask);
-        //         $("#" + i).children($('textarea')).text($(savedTask));
-        //     }
-        // }
-    
+    // for (var i = 9; i <= 17; i++) {
+    //     var savedTask = localStorage.getItem(i);
+    //     if (savedTask !== null) {
+    //         console.log(savedTask);
+    //         $("#" + i).children($('textarea')).text($(savedTask));
+    //     }
+    // }
+
 
     // $('id .description').val(localStorage.getItem(hour));
     // if (savedTask !== null) {
@@ -136,6 +143,7 @@ $(function () {
 
 
     loadPage();
+
 });
 
 
