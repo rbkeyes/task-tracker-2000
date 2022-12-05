@@ -3,6 +3,11 @@
 $(function () {
     console.log('ready to go!')
 
+    function loadPage() {
+        currentDate();
+        getSavedTasks();
+        // renderSavedTasks()
+    }
     // display date
     function currentDate() {
         const date = dayjs().format('MMMM D, YYYY');
@@ -10,8 +15,8 @@ $(function () {
     }
     currentDate()
 
-    var task = "";
-    var hour = "";
+    var hourArr = [];
+    var taskArr = [];
     var hourID = "";
 
     var schedule = $('.time-block');
@@ -20,21 +25,47 @@ $(function () {
     // get current time
     const now = dayjs().hour();
     console.log(now);
-    if (typeof now === Number);
-    console.log("number");
+    console.log(typeof now);
+    // to do: 
+    // set interval to not so it auto-refreshes current time
+    // auto-refresh past/present/future when now changes
+    // auto-refresh current date when now === 0
 
+    // get saved tasks
+    function getSavedTasks() {
+        var savedHour = JSON.parse(localStorage.getItem('hour'));
+        hourArr = savedHour;
+        console.log(hourArr);
+        var savedTask = JSON.parse(localStorage.getItem('task'));
+        taskArr = savedTask;
+        console.log(taskArr);
+    }
+
+    function renderSavedTasks() {
+        getSavedTasks();
+        
+    }
 
     // add event listener to save btn
     $(".saveBtn").click(function (event) {
         event.preventDefault();
-        // get value of the element with class of "description" 
-        task = $(this).siblings(".description").val();
         // set variable hour to id arribute of div element 
-        hour = $(this).parent().attr("id");
+        var hourEl = $(this).parent().attr("id");
+        // push to hour array
+        hourArr.push(hourEl);
+        // empty var hourArr
+        hourArr;
+        // get value of the element with class of "description" 
+        taskEl = $(this).siblings(".description").val();
+        // push to task array
+        taskArr.push(taskEl);
+        // empty var taskArr
+        taskArr;
         //set items in local storage.
-        localStorage.setItem(hour, JSON.stringify(task)).trim();
-        console.log(hour);
-        console.log(task);
+        localStorage.setItem('hour', JSON.stringify(hourArr));
+        console.log(hourArr);
+        localStorage.setItem('task', JSON.stringify(taskArr));
+        console.log(taskArr);
     });
 
     // function pastPresentFuture() {
@@ -61,7 +92,7 @@ $(function () {
             scheduleHour.removeClass("past").addClass("future");
         }
     }
-    
+
     // retrieve saved tasks from local storage and write to page
     // $("#9 .description").text(localStorage.getItem("9"));
     // $("#10 .description").text(localStorage.getItem("10"));
@@ -81,28 +112,30 @@ $(function () {
     //         console.log(key + ": " + value);
     //     console.log($(taskHour).text(value));
     //     }
+
+    // console.log(localStorage);
+
+        // for (var i = 9; i <= 17; i++) {
+        //     var savedTask = localStorage.getItem(i);
+        //     if (savedTask !== null) {
+        //         console.log(savedTask);
+        //         $("#" + i).children($('textarea')).text($(savedTask));
+        //     }
+        // }
     
-        // console.log(localStorage);
 
-        for (var i = 9; i <= 17; i++) {
-            var savedTask = localStorage.getItem(i);
-            if (savedTask !== null) {
-                console.log(savedTask);
+    // $('id .description').val(localStorage.getItem(hour));
+    // if (savedTask !== null) {
+    //     var textArea = $(scheduleHour.children('.description'))
+    //     $(scheduleHour.children('.description')).val(localStorage.getItem(hour))
+    //     console.log(scheduleHour);
+    //     console.log($(textInput[hour]));
+    //     console.log(textArea);
 
-                $("#" + i).children($('textarea')).text($(savedTask));
-            }
+    // }
 
-            // $('id .description').val(localStorage.getItem(hour));
-            // if (savedTask !== null) {
-            //     var textArea = $(scheduleHour.children('.description'))
-            //     $(scheduleHour.children('.description')).val(localStorage.getItem(hour))
-            //     console.log(scheduleHour);
-            //     console.log($(textInput[hour]));
-            //     console.log(textArea);
 
-            // }
-        }
-
+    loadPage();
 });
 
 
