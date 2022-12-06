@@ -12,15 +12,13 @@ I wanted to create a workday planner that color-codes past, present, and future 
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+To use the scheduler, simply enter a task in the text area of the desired timeblock. The timeblocks are highlighted different colors for past, present, and future timeblocks. To save a task, click the button with the save icon to the right of the text area. Saved tasks will display automatically when page loads. To clear a task, delete text from textbox and save. Or, click the button located below scheduler to clear entire form and delete saved tasks from local storage.
 
 [Deployed application](https://rbkeyes.github.io/task-tracker-2000/)
 
 [Github Link](https://github.com/rbkeyes/task-tracker-2000)
     
-    ![Screenshot of deployed application](assets/images/task-tracker-2000-screenshot.png)
+    ![Screenshot of deployed application](./assets/images/task-tracker-2000-screenshot.png)
 
 ## Credits
 
