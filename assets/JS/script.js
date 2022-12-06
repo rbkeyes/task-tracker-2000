@@ -94,8 +94,13 @@ $(function () {
             taskArr;
         }
     });
-
     
+    // clear clear local storage, refresh page
+    $('#clear-tasks-button').click(function(event){
+        event.preventDefault();
+        localStorage.clear();
+        location.reload();
+    })
 
     loadPage();
 

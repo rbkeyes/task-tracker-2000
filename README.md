@@ -14,3 +14,5 @@ jQuery documentation:
 
 w3schools:
 [w3schools "this"](https://www.w3schools.com/js/js_this.asp)
+
+[localStorage.clear()](https://www.w3schools.com/jsref/met_storage_clear.asp)

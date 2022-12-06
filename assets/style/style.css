@@ -1,60 +1,91 @@
+:root {
+  --rust: #452107;
+  --lilac: #908AB4;
+  --olive: #75750f;
+  --peach: #E8D5C8;
+  --paleviolet: #DADEED;
+  --lightgreen: #EDEDCE;
+  --highlight: hotpink;
+  --parchment: #fff9f4;
+}
+
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    
-  }
-  
-  textarea {
-    background: transparent;
-    border: none;
-    resize: none;
-    color: #000000;
-    border-left: 1px solid black;
-    padding: 10px;
-  }
-  
-  .description {
-    white-space: pre-wrap;
-  }
-  
-  .time-block {
-    border-radius: 15px;
-  }
-  
-  .row {
-    border-top: 1px solid white;
-  }
-  
-  .hour {
-    background-color: #ffffff;
-    color: #000000;
-    border-top: 1px dashed #000000;
-  }
-  
-  .past {
-    background-color: #b6c8cf;
-    color: white;
-  }
-  
-  .present {
-    background-color: #bea0d0;
-    color: white;
-  }
-  
-  .future {
-    background-color: #a2d2bf;
-    color: white;
-  }
-  
-  .saveBtn {
-    border-left: 1px solid black;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: #6f52e4;
-    color: white;
-  }
-  
-  .saveBtn i:hover {
-    font-size: 20px;
-    transition: all 0.3s ease-in-out;
-  }
+  font-family: 'Source Code Pro', monospace;
+  font-size: 16px;
+  background-color: var(--parchment);
+}
+
+textarea {
+  background: transparent;
+  border: none;
+  resize: none;
+  color: #000000;
+  border-left: 1px solid white;
+  padding: 10px;
+}
+
+.description {
+  white-space: pre-wrap;
+}
+
+.time-block {
+  border-radius: 15px;
+}
+
+.row {
+  border-top: 1px solid white;
+}
+
+.hour {
+  background-color: var(--olive);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  color: white;
+  border-top: 1px solid white;
+}
+
+.past {
+  background-color: var(--peach);
+  color: white;
+}
+
+.present {
+  background-color: var(--paleviolet);
+  color: white;
+}
+
+.future {
+  background-color: var(--lightgreen);
+  color: white;
+}
+
+.saveBtn {
+  border-left: 1px solid white;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: var(--lilac);
+  color: white;
+}
+
+.saveBtn:hover {
+  background-color: var(--highlight);
+}
+
+.saveBtn i:hover {
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.button {
+  padding: .5rem;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background-color: var(--highlight);
+}
+
+#clear-tasks-button {
+  text-align: center;
+  margin: 1rem;
+}
