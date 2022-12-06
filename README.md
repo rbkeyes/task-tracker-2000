@@ -18,7 +18,7 @@ To use the scheduler, simply enter a task in the text area of the desired timebl
 
 [Github Link](https://github.com/rbkeyes/task-tracker-2000)
     
-    ![Screenshot of deployed application](./assets/images/task-tracker-2000-screenshot.png)
+![Screenshot of deployed application](./assets/images/task-tracker-2000-screenshot.png)
 
 ## Credits
 
