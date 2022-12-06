@@ -29,6 +29,7 @@ https://github.com/JulieAnn2330/work-day-scheduler/blob/master/index.html
 
 
 jQuery documentation:
+
 [.click()](https://api.jquery.com/click/)
 
 [.siblings()](https://api.jquery.com/siblings/)
